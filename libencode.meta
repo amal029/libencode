@@ -5,5 +5,5 @@
  (repo "https://github.com/amal029/libencode")
  (category data)
  (license "MIT")
- (depends cock)
- (foreign-depends))
+ (egg libencode)
+ (depends cock srfi-1 extras))

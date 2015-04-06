@@ -9,19 +9,6 @@
 (require-extension srfi-1)
 ;(require-extension cock)
 
-@(author "Avinash Malik")
-
-@(email "avinash.malik@auckland.ac.nz")
-
-@(description "Bencode (a format used for Bit-torrent) to s-expression
-decoder. Bencode list are converted to scheme lists. Bencode
-dictionaries are converted to scheme alists. Only ASCII format are
-supported, no UTF-8 support.")
-
-@(egg "libencode")
-
-@(noop)
-
 ;;; Stops reading after the specified number of characters
 (define (build-string-type iport chars)
   (letrec ((build (lambda (res count)
