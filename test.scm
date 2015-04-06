@@ -52,12 +52,12 @@
 (let ((iport (open-input-string "d3:cow3:moo4:spam4:eggse")))
   (assert (equal?  '(("cow" "moo") ("spam" "eggs"))
 		   (decoder iport))
-	  "LIST TEST FAIL: d3:cow3:moo4:spam4:eggse")
+	  "DICT TEST FAIL: d3:cow3:moo4:spam4:eggse")
   (close-input-port iport))
 
-;;; The complex example
+;;; Test-10 complex dict test
 (let ((iport (open-input-string "d4:spaml1:a1:bee")))
   (assert (equal?  '(("spam" ("a" "b")))
 		   (decoder iport))
-	  "LIST TEST FAIL: d4:spaml1:a1:bee")
+	  "DICT TEST FAIL: d4:spaml1:a1:bee")
   (close-input-port iport))
