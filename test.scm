@@ -30,7 +30,13 @@
 	  "STRING TEST FAIL: 12:avinashmalik")
   (close-input-port iport))
 
-;;; Test-6 list test
+;;; Test-6.1 list test
+(let ((iport (open-input-string "le")))
+  (assert (equal?  '() (decoder iport))
+	  "LIST TEST FAIL: le")
+  (close-input-port iport))
+
+;;; Test-6.2 list test
 (let ((iport (open-input-string "l4:spame")))
   (assert (equal?  '("spam") (decoder iport))
 	  "LIST TEST FAIL: l4:spame")
@@ -55,9 +61,17 @@
 	  "DICT TEST FAIL: d3:cow3:moo4:spam4:eggse")
   (close-input-port iport))
 
-;;; Test-10 complex dict test
+;;; Test-10 dict test
 (let ((iport (open-input-string "d4:spaml1:a1:bee")))
   (assert (equal?  '(("spam" ("a" "b")))
 		   (decoder iport))
 	  "DICT TEST FAIL: d4:spaml1:a1:bee")
+  (close-input-port iport))
+
+;;; Test-11 dict test
+(let ((iport (open-input-string "d4:spaml1:a1:bei-1eli500eee")))
+  (assert (equal?  '(("spam" ("a" "b"))
+		     (-1 (500)))
+		   (decoder iport))
+	  "DICT TEST FAIL: d4:spaml1:a1:bei-1eli500eee")
   (close-input-port iport))

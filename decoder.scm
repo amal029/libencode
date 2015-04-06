@@ -41,8 +41,7 @@
 ;;; Uses the delimeter #\e to stop reading
 (define (build-list-type iport)
   (letrec ((build (lambda (res)
-		    (let ((res (cons (decoder iport) res))
-			  (c (peek-char iport)))
+		    (let ((c (peek-char iport)))
 		      (cond
 		       ((eof-object? c)
 			(let ((_ (read-char iport)))
@@ -51,7 +50,8 @@
 		       ((equal? #\e c)
 			(let ((_ (read-char iport)))
 			  (reverse res)))
-		       (else (build res)))))))
+		       (else (build
+			      (cons (decoder iport) res))))))))
     (build '())))
 
 (define (build-dict-type iport)
