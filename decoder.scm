@@ -3,7 +3,10 @@
   (hide build-int-type)
   (hide build-list-type)
   (hide build-dict-type)
-  (unit decoder) (uses extras))
+  (unit decoder) (uses extras)
+  (uses util))
+
+
 
 ;;; Stops reading after the specified number of characters
 (define (build-string-type iport chars)
@@ -45,12 +48,14 @@
     (build '())))
 
 (define (build-dict-type iport)
-  '())
+  (let ((ll (build-list-type iport)))
+    (let-values (((k v) (partition-indexed
+			 (lambda (_ i) (equal? (modulo i 2) 0)) ll)))
+      (zip k v))))
 
 (define (decoder iport)
   (let ((c (read-char iport)))
     (cond
-     ;; I represent the EOF with a '()
      ((eof-object? c)
       (error "Malformed Bencode: " c))
      (else
