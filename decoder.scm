@@ -7,7 +7,20 @@
   (uses util))
 
 (require-extension srfi-1)
+(require-extension cock)
 
+@(author "Avinash Malik")
+
+@(email "avinash.malik@auckland.ac.nz")
+
+@(description "Bencode (a format used for Bit-torrent) to s-expression
+decoder. Bencode list are converted to scheme lists. Bencode
+dictionaries are converted to scheme alists. Only ASCII format are
+supported, no UTF-8 support.")
+
+@(egg "libencode")
+
+@(noop)
 
 ;;; Stops reading after the specified number of characters
 (define (build-string-type iport chars)
@@ -62,6 +75,16 @@
       (fold alist-cons '() k v))))
 
 (define (decoder iport)
+  @("Decode Bencode format to an s-expression"
+    (iport "The input port to read from")
+    @to "s-expression"
+    @example "Converting the bencoded value into s-expression"
+    (let ((iport (open-input-string "d4:spaml1:a1:bei-1eli500eee")))
+      (assert (equal?  '(("spam" . ("a" "b"))
+			 (-1 . (500)))
+		       (decoder iport))
+	      "DICT TEST FAIL: d4:spaml1:a1:bei-1eli500eee")
+      (close-input-port iport)))
   (let ((c (read-char iport)))
     (cond
      ((eof-object? c)

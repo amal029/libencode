@@ -1,5 +1,5 @@
 CC=csc
-OPTS=-strict-types -specialize -c -O2 -d2
+OPTS=-strict-types -specialize -c -O2 -d2 -X cock
 LDFLAGS=
 SRCS=decoder.scm encoder.scm util.scm test.scm
 OBJS=decoder.o encoder.o util.o test.o
