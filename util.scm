@@ -1,17 +1,17 @@
 (declare (unit util))
 
 ;;; parition by index function
-(define (parition-indexed f l)
-  (letrec ((part (lambda (count fi se ll)
+(define (partition-indexed f l)
+  (letrec ((part (lambda (fi se count ll)
 		   (if (null? ll)
 		       (values fi se)
 		       (cond
 			((f (car ll) count)
-			 (part (+ count 1)
-			       (cons (car l) fi) se
+			 (part (cons (car ll) fi) se
+			       (+ count 1)
 			       (cdr ll)))
 			(else
-			 (part (+ count 1) fi
-			       (cons (car l) se)
+			 (part fi (cons (car ll) se)
+			       (+ count 1)
 			       (cdr ll))))))))
     (part '() '() 0 l)))
