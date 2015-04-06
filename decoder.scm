@@ -46,7 +46,8 @@
 		      (cond
 		       ((eof-object? c)
 			(let ((_ (read-char iport)))
-			  (error "Malformed Bencode list: " ress)))
+			  (error "Malformed Bencode list: "
+				 (reverse res))))
 		       ((equal? #\e c)
 			(let ((_ (read-char iport)))
 			  (reverse res)))
