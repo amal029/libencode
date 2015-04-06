@@ -1,4 +1,4 @@
-(declare (unit util))
+;(declare (unit util))
 
 ;;; parition by index function
 (define (partition-indexed f l)

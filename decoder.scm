@@ -1,13 +1,13 @@
-(declare
-  (hide build-string-type)
-  (hide build-int-type)
-  (hide build-list-type)
-  (hide build-dict-type)
-  (unit decoder) (uses extras)
-  (uses util))
+;(declare
+  ;(hide build-string-type)
+  ;(hide build-int-type)
+  ;(hide build-list-type)
+  ;(hide build-dict-type)
+  ;(unit decoder) (uses extras)
+  ;(uses util))
 
 (require-extension srfi-1)
-(require-extension cock)
+;(require-extension cock)
 
 @(author "Avinash Malik")
 

@@ -1,0 +1,8 @@
+(use cock setup-helper-mod)
+
+(compile-shared-module
+ 'libencode
+ ;(extension-version "0.1")
+ options: '(-X cock -O3))
+
+(run-cock -o libencode.wiki libencode.scm decoder.scm encoder.scm util.scm)

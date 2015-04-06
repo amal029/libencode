@@ -1,4 +1,4 @@
-(declare (uses util) (uses decoder))
+(require-extension libencode)
 
 ;;; Test-1: test positive integer bencode
 (let ((iport (open-input-string "i4e")))
