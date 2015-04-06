@@ -9,6 +9,7 @@ all:
 
 test:
 	$(CC) $(LDFLAGS) $(OBJS) -o $@
+	./test
 
 clean:
 	rm -rf *.o *.types test
