@@ -1,5 +1,7 @@
 # libencode
-Bencode format decoder, encoder, and validator. 
+
+A scheme library for bencode (of the bittorrent fame) decoding,
+encoding, and validatio.
 
 ## Compilation
 make
@@ -48,12 +50,3 @@ The function signature is: ```scheme encode <s-expression>```
 
 ## The conversion format
 |Bencode format | Generated S-expression|
-|---------------------------------------|
-|int            | number		|
-|---------------------------------------|
-|string         | string		|
-|---------------------------------------|
-|list           | list			|
-|---------------------------------------|
-|dict           | alist			|
-|---------------------------------------|
