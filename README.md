@@ -3,11 +3,17 @@
 A scheme library for bencode (of the bittorrent fame) decoding,
 encoding, and validation.
 
+## Requirements
+chicken-scheme
+
 ## Compilation
 make
 
 ## Installation
 sudo make install
+
+## Uninstallation
+chicken-uninstall -s libencode
 
 ## Testing
 make test
