@@ -17,4 +17,4 @@
     (part '() '() 0 l)))
 
 (define (alist? al)
-  (every pair? al))
+  (and (not (null? al)) (every pair? al)))

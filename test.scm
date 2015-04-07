@@ -1,5 +1,7 @@
 (require-extension libencode)
 
+;;; DECODING TESTS
+
 ;;; Test-1: test positive integer bencode
 (let ((iport (open-input-string "i4e")))
   (assert (equal? 4 (decoder iport))
@@ -75,3 +77,48 @@
 		   (decoder iport))
 	  "DICT TEST FAIL: d4:spaml1:a1:bei-1eli500eee")
   (close-input-port iport))
+
+;;; ENCODING TESTS
+
+;;; Test-1: test positive integer bencode
+(let ()
+  (assert (equal? "i4e" (encode 4))
+	  "INT TEST FAIL: i4e"))
+
+;;; Test-2 Large integer number
+(let ()
+  (assert (equal? "i4000e" (encode 4000))
+	  "BIG INTEGER TEST FAIL: i4000e"))
+
+;;; Test-3: test negative integer bencode
+(let ()
+  (assert (equal? "i-4e" (encode -4))
+	  "INT TEST FAIL: i-4e"))
+
+;;; Test-4 string test
+(let ()
+  (assert (equal? "4:spam" (encode "spam"))
+	  "STRING TEST FAIL: 4:spam"))
+
+;;; Test-5 string test
+(let ()
+  (assert (equal? "12:avinashmalik" (encode "avinashmalik"))
+	  "STRING TEST FAIL: 12:avinashmalik"))
+
+;;; Test-6.1 list test
+(let ()
+  (assert (equal?  "le" (encode '()))
+	  "LIST TEST FAIL: le"))
+
+;;; Test-6.2 list test
+(let ()
+  (assert (equal?  "l4:spame" (encode '("spam")))
+	  "LIST TEST FAIL: l4:spame"))
+
+;;; Test-11 dict test
+(let ()
+  (assert (equal?
+	   "d4:spaml1:a1:bei-1eli500eee"
+	   (encode '(("spam" . ("a" "b"))
+		     (-1 . (500)))))
+	  "DICT TEST FAIL: d4:spaml1:a1:bei-1eli500eee"))
