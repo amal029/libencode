@@ -50,3 +50,8 @@ The function signature is: ```scheme encode <s-expression>```
 
 ## The conversion format
 |Bencode format | Generated S-expression|
+| ------------	| --------------------- |
+|int            | number		|
+|string         | string		|
+|list           | list			|
+|dict           | alist			|
