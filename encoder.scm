@@ -34,7 +34,8 @@
     ((number? sexp) (int->bint sexp))
     ((string? sexp) (string->bstring sexp))
     ;; Every list is also an alist,
-    ;; so alist needs to be checked 
+    ;; so alist needs to be checked
+    ;; before list
     ((alist? sexp)  (alist->bdict sexp))
     ((list? sexp)   (list->blist sexp))
     (else (error "Don't know how to encode" sexp))))
