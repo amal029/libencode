@@ -48,7 +48,7 @@ The function signature is: ```scheme decoder <input-port> ```
 
 The function signature is: ```scheme encode <s-expression>```
 
-## The conversion format
+## The format (both ways bencode <-> s-expression)
 |Bencode format | Generated S-expression|
 | ------------	| --------------------- |
 |int            | number		|
