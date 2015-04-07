@@ -1,13 +1,4 @@
-;(declare
-  ;(hide build-string-type)
-  ;(hide build-int-type)
-  ;(hide build-list-type)
-  ;(hide build-dict-type)
-  ;(unit decoder) (uses extras)
-  ;(uses util))
-
 (require-extension srfi-1)
-;(require-extension cock)
 
 ;;; Stops reading after the specified number of characters
 (define (build-string-type iport chars)

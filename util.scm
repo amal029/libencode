@@ -15,3 +15,6 @@
 			       (+ count 1)
 			       (cdr ll))))))))
     (part '() '() 0 l)))
+
+(define (alist? al)
+  (every pair? al))
