@@ -1,7 +1,7 @@
 # libencode
 
 A scheme library for bencode (of the bittorrent fame) decoding,
-encoding, and validatio.
+encoding, and validation.
 
 ## Compilation
 make
