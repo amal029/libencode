@@ -1,15 +1,12 @@
-(use cock setup-helper-mod)
+(use setup-helper-mod)
 
 (define compile (lambda () (compile-shared-module
 			    'libencode
-			    options: '(-X cock -O3))))
+			    options: '(-O3))))
 
 (define install (lambda () (install-shared-extension-module
 			    'libencode
 			    (extension-version "0.1-alpha"))))
-
-;; (run-cock -o libencode.wiki
-;; 	  libencode.scm decoder.scm util.scm encoder.scm)
 
 (define (main args)
   (cond

@@ -39,3 +39,5 @@
     ((alist? sexp)  (alist->bdict sexp))
     ((list? sexp)   (list->blist sexp))
     (else (error "Don't know how to encode" sexp))))
+
+(define lib:encode encode)

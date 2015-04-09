@@ -53,16 +53,6 @@
       (fold alist-cons '() k v))))
 
 (define (decoder iport)
-  @("Decode Bencode format to an s-expression"
-    (iport "The input port to read from")
-    @to "s-expression"
-    @example "Converting the bencoded value into s-expression"
-    (let ((iport (open-input-string "d4:spaml1:a1:bei-1eli500eee")))
-      (assert (equal?  '(("spam" . ("a" "b"))
-			 (-1 . (500)))
-		       (decoder iport))
-	      "DICT TEST FAIL: d4:spaml1:a1:bei-1eli500eee")
-      (close-input-port iport)))
   (let ((c (read-char iport)))
     (cond
      ((eof-object? c)
@@ -75,3 +65,5 @@
        ((char-numeric? c) (build-string-type
 			   iport (build-int-type
 				  c iport #\:))))))))
+
+(define lib:decode decoder)
