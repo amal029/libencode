@@ -29,7 +29,7 @@ make clean
 ;;; "Converting the bencoded value into s-expression"
 (require-extension libencode)
 (let ((iport (open-input-string "d4:spaml1:a1:bei-1eli500eee")))
-      (assert (equal?  '(("spam" . ("a" "b"))
+      (assert (equal?  #(("spam" . ("a" "b"))
 			 (-1 . (500)))
 		       (decoder iport))
 	      "DICT TEST FAIL: d4:spaml1:a1:bei-1eli500eee")
@@ -47,7 +47,7 @@ The function signature is: ```scheme decoder <input-port> ```
 (let ()
   (assert (equal?
 	   "d4:spaml1:a1:bei-1eli500eee"
-	   (encode '(("spam" . ("a" "b"))
+	   (encode #(("spam" . ("a" "b"))
 		     (-1 . (500)))))
 	  "DICT TEST FAIL: d4:spaml1:a1:bei-1eli500eee"))
 ```
