@@ -17,16 +17,17 @@
 	z)
       (error "Not a list: " sexp)))
 
-(define (alist->bdict sexp)
-  (if (alist? sexp)
-      (let* ((l (fold cons* '()
+(define (vector->bdict sexp)
+  (if (vector? sexp)
+      (let* ((sexp (vector->list sexp))
+	     (l (fold cons* '()
 		      (reverse (map car sexp))
 		      (reverse (map cdr sexp))))
 	     (x (map encode l))
 	     (y (foldl string-append "" x))
 	     (z (string-append "d" y "e")))
 	z)
-      (error "Not a alist: " sexp)))
+      (error "Not a vector: " sexp)))
 
 
 (define (encode sexp)
@@ -36,7 +37,7 @@
     ;; Every list is also an alist,
     ;; so alist needs to be checked
     ;; before list
-    ((alist? sexp)  (alist->bdict sexp))
+    ((vector? sexp)  (vector->bdict sexp))
     ((list? sexp)   (list->blist sexp))
     (else (error "Don't know how to encode" sexp))))
 

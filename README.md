@@ -60,4 +60,4 @@ The function signature is: ```scheme encode <s-expression>```
 |int            | number		|
 |string         | string		|
 |list           | list			|
-|dict           | alist			|
+|dict           | vec of pair	|

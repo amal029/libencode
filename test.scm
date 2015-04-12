@@ -58,21 +58,21 @@
 
 ;;; Test-9 dict test
 (let ((iport (open-input-string "d3:cow3:moo4:spam4:eggse")))
-  (assert (equal?  '(("cow" . "moo") ("spam" . "eggs"))
+  (assert (equal?  #(("cow" . "moo") ("spam" . "eggs"))
 		   (lib:decode iport))
 	  "DICT TEST FAIL: d3:cow3:moo4:spam4:eggse")
   (close-input-port iport))
 
 ;;; Test-10 dict test
 (let ((iport (open-input-string "d4:spaml1:a1:bee")))
-  (assert (equal?  '(("spam" . ("a" "b")))
+  (assert (equal?  #(("spam" . ("a" "b")))
 		   (lib:decode iport))
 	  "DICT TEST FAIL: d4:spaml1:a1:bee")
   (close-input-port iport))
 
 ;;; Test-11 dict test
 (let ((iport (open-input-string "d4:spaml1:a1:bei-1eli500eee")))
-  (assert (equal?  '(("spam" . ("a" "b"))
+  (assert (equal?  '#(("spam" . ("a" "b"))
 		     (-1 . (500)))
 		   (lib:decode iport))
 	  "DICT TEST FAIL: d4:spaml1:a1:bei-1eli500eee")
@@ -119,6 +119,8 @@
 (let ()
   (assert (equal?
 	   "d4:spaml1:a1:bei-1eli500eee"
-	   (lib:encode '(("spam" . ("a" "b"))
-		     (-1 . (500)))))
+	   (lib:encode #(("spam" . ("a" "b"))
+			  (-1 . (500)))))
 	  "DICT TEST FAIL: d4:spaml1:a1:bei-1eli500eee"))
+
+

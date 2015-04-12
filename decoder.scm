@@ -50,7 +50,7 @@
     (let-values (((k v) (partition-indexed
 			 (lambda (_ i)
 			   (equal? (modulo i 2) 0)) ll)))
-      (fold alist-cons '() k v))))
+      (list->vector (fold alist-cons '() k v)))))
 
 (define (decoder iport)
   (let ((c (read-char iport)))
