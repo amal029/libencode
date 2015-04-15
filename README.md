@@ -39,7 +39,7 @@ make clean
 The above example shows using the bencode format to s-expression format
 conversion. Malformed bencoded format will be reported as such.
 
-The function signature is: ```scheme decoder <input-port> ```
+The function signature is: ```scheme lib:decode <input-port> ```
 
 ### Example of s-expression to bencode format conversion
 
@@ -52,7 +52,7 @@ The function signature is: ```scheme decoder <input-port> ```
 	  "DICT TEST FAIL: d4:spaml1:a1:bei-1eli500eee"))
 ```
 
-The function signature is: ```scheme encode <s-expression>```
+The function signature is: ```scheme lib:encode <s-expression>```
 
 ## The format (both ways bencode <-> s-expression)
 |Bencode format | Generated S-expression|
