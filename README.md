@@ -31,7 +31,7 @@ make clean
 (let ((iport (open-input-string "d4:spaml1:a1:bei-1eli500eee")))
       (assert (equal?  #(("spam" . ("a" "b"))
 			 (-1 . (500)))
-		       (decoder iport))
+		       (lib:decode iport))
 	      "DICT TEST FAIL: d4:spaml1:a1:bei-1eli500eee")
       (close-input-port iport))
 ```
@@ -47,7 +47,7 @@ The function signature is: ```scheme decoder <input-port> ```
 (let ()
   (assert (equal?
 	   "d4:spaml1:a1:bei-1eli500eee"
-	   (encode #(("spam" . ("a" "b"))
+	   (lib:encode #(("spam" . ("a" "b"))
 		     (-1 . (500)))))
 	  "DICT TEST FAIL: d4:spaml1:a1:bei-1eli500eee"))
 ```
